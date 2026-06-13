@@ -1,0 +1,37 @@
+# Tikspot — RouterOS container "App" manifest (RouterOS 7.22+).
+#
+# Adding this as a RouterOS App makes the router AUTO-PROVISION the network: it creates
+# the veth, adds it to the chosen bridge, assigns an IP and the NAT rules — no manual
+# /interface/veth, /interface/bridge/port or /ip/address steps. See docs/deploy-app.md
+# for the full walk-through (registry, /app add, and the first-run wizard).
+#
+# This file is the compose-style `yaml:` manifest. The network mode (lan|internal) is
+# chosen at add time — `/app add network=lan ...` — not in this file.
+
+name: tikspot
+descr: Captive portal + FreeRADIUS hotspot manager for MikroTik
+page: https://github.com/omegatron/tinkernet-tikspot
+category: network
+default-credentials: set-at-first-run-wizard
+url-path: /admin
+services:
+  tikspot:
+    # Multi-arch public image (arm64 + amd64) published by the repo's release workflow.
+    # RouterOS pulls the variant matching your router's CPU automatically. Pin a release
+    # tag (or use :latest). See docs/deploy-app.md for the registry setup.
+    image: ghcr.io/omegatron/tinkernet-tikspot:0.10.0
+    ports:
+      # Admin UI + captive portal (HTTP). Exposed on the router's address:8088 for admin
+      # convenience (http://<router>:8088/admin); hotspot clients reach the portal at the
+      # container's OWN IP on :80 (via the hotspot redirect + walled-garden the wizard adds).
+      - "8088:80:tcp"
+    volumes:
+      # Persistent: plans, vouchers, accounts, page designs, settings, branding uploads.
+      - "data:/data"
+    restart: unless-stopped
+    # The RADIUS shared secret (TIKSPOT_NAS_SECRET) is intentionally NOT set here. On first
+    # boot the container generates a UNIQUE random secret, and the admin wizard's
+    # Auto-configure syncs it to the router's /radius client — so every install gets its
+    # own secret (never ship a shared one publicly). To pin a known value instead, add:
+    #   environment:
+    #     TIKSPOT_NAS_SECRET: "your-strong-secret"

@@ -1,0 +1,32 @@
+node_modules/
+app/node_modules/
+editor/node_modules/
+dist/
+*.log
+.DS_Store
+data/
+*.tar
+*.tar.xz
+.env
+.env.*
+!.env.example
+coverage/
+.playwright-mcp/
+tikspot-login-portal.png
+*.screenshot.png
+
+# Local reference bundles (never commit)
+.design-ref/
+*.har
+
+# Local, machine-specific scripts (carry secrets / device details — never commit)
+local/
+
+# Claude Code local config (may contain machine paths / permissions — never commit)
+.claude/
+
+# Internal bookkeeping — kept locally, not published
+changelog.md
+changelog_detailed.md
+failed_commands.md
+launch.md

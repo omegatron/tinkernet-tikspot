@@ -1,0 +1,12 @@
+**/node_modules
+**/dist
+.git
+.github
+data
+docs
+examples
+*.md
+!docs/setup-mikrotik.md
+.env
+.env.*
+coverage

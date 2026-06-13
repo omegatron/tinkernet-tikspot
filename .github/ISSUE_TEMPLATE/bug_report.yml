@@ -1,0 +1,61 @@
+name: Bug report
+description: Something isn't working as expected
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug! Please **do not** report security
+        vulnerabilities here — use the Security tab → "Report a vulnerability" instead.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear description of the bug, including what you expected to happen.
+      placeholder: When I generate a voucher batch with a date window, ...
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Go to admin → Vouchers
+        2. ...
+        3. See error
+    validations:
+      required: true
+  - type: input
+    id: tikspot-version
+    attributes:
+      label: Tikspot version
+      description: From the admin footer or the image tag (e.g. 0.10.0 / latest).
+      placeholder: "0.10.0"
+    validations:
+      required: true
+  - type: input
+    id: routeros-version
+    attributes:
+      label: RouterOS version
+      placeholder: "7.22"
+    validations:
+      required: true
+  - type: dropdown
+    id: device
+    attributes:
+      label: Device / architecture
+      options:
+        - hAP ax² / ax³ (arm64)
+        - RB5009 (arm64)
+        - x86 / CHR (amd64)
+        - Other (note below)
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Container logs
+      description: Relevant output from `/container/print` logs or `docker logs` (redact secrets).
+      render: shell
+    validations:
+      required: false

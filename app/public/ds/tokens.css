@@ -1,0 +1,272 @@
+/* TinkerNet design tokens — vendored from the design system bundle. */
+/* TinkerNet webfonts.
+   NOTE: Sourced from Google Fonts CDN (Chakra Petch, IBM Plex Sans, JetBrains Mono).
+   These are the @font-face declarations the brand relies on. If you have licensed
+   binaries, drop them in assets/fonts/ and swap the src URLs below. */
+
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+/* ============================================================
+   TinkerNet — Color tokens
+   Dark cyberpunk / futurepunk. Deep blue-black voids,
+   muted neon signal accents. Glow, don't shout.
+   ============================================================ */
+
+:root {
+  /* --- Base neutrals: cool, blue-tinted near-blacks --- */
+  --void:        #06080B; /* deepest backdrop, page void */
+  --bg-base:     #0A0D12; /* default page background */
+  --bg-surface:  #0F141A; /* surface / panel */
+  --bg-raised:   #161D26; /* raised card */
+  --bg-overlay:  #1E2730; /* popover / modal / hover fill */
+  --bg-inset:    #070A0E; /* inset wells, inputs, code blocks */
+
+  /* --- Hairlines & borders --- */
+  --line-faint:   #141A21;
+  --line-subtle:  #1E2731;
+  --line-default: #2A3743;
+  --line-strong:  #3A4B58;
+
+  /* --- Text --- */
+  --ink-primary:   #E6EDF3; /* cool white */
+  --ink-secondary: #9AA9B7;
+  --ink-muted:     #5E6B78;
+  --ink-faint:     #3C4651;
+  --ink-inverse:   #06080B; /* on neon fills */
+
+  /* --- Brand blue (sampled from the TinkerNet robot logo) --- */
+  --brand-blue:     #1761B0; /* exact logo blue — solid brand fills, logo tint */
+  --brand-blue-rgb: 23 97 176; /* @kind color */
+
+  /* --- Signal accents (lit for glow on dark) --- */
+  --blue:        #2F8CEE; /* PRIMARY — lit TinkerNet blue */
+  --blue-rgb:    47 140 238; /* @kind color */
+  --blue-dim:    #1F6FCB;
+  --blue-deep:   #0E2E50;
+
+  /* legacy alias — cyan now resolves to brand blue */
+  --cyan:        var(--blue);
+  --cyan-rgb:    var(--blue-rgb); /* @kind color */
+
+  --magenta:     #E85B9E; /* SECONDARY — hot pulse */
+  --magenta-rgb: 232 91 158; /* @kind color */
+  --magenta-dim: #A63B70;
+  --magenta-deep:#3C1228;
+
+  --violet:      #9C7BFF;
+  --violet-rgb:  156 123 255; /* @kind color */
+
+  --lime:        #ADE84F; /* success / live */
+  --lime-rgb:    173 232 79; /* @kind color */
+  --lime-deep:   #2A3C12;
+
+  --amber:       #F5B544; /* warning / metered */
+  --amber-rgb:   245 181 68; /* @kind color */
+  --amber-deep:  #3E2E0C;
+
+  --red:         #F2585B; /* danger / offline */
+  --red-rgb:     242 88 91; /* @kind color */
+  --red-deep:    #3C1314;
+
+  --sky:         #5AA9FF; /* info / link — lighter than primary */
+  --sky-rgb:     90 169 255; /* @kind color */
+
+  /* ============================================================
+     SEMANTIC ALIASES — reach for these in components
+     ============================================================ */
+
+  /* Backgrounds / surfaces */
+  --surface-page:    var(--bg-base);
+  --surface-card:    var(--bg-surface);
+  --surface-raised:  var(--bg-raised);
+  --surface-overlay: var(--bg-overlay);
+  --surface-inset:   var(--bg-inset);
+
+  /* Text */
+  --text-strong:  var(--ink-primary);
+  --text-body:    var(--ink-secondary);
+  --text-muted:   var(--ink-muted);
+  --text-faint:   var(--ink-faint);
+  --text-on-accent: var(--ink-inverse);
+
+  /* Borders */
+  --border-card:   var(--line-subtle);
+  --border-input:  var(--line-default);
+  --border-hover:  var(--line-strong);
+
+  /* Brand / interactive */
+  --accent:           var(--blue);
+  --accent-rgb:       var(--blue-rgb); /* @kind color */
+  --accent-hover:     #4BA3FF;
+  --accent-press:     #1F6FCB;
+  --accent-2:         var(--magenta);
+  --accent-2-rgb:     var(--magenta-rgb); /* @kind color */
+
+  /* Status */
+  --success: var(--lime);
+  --warning: var(--amber);
+  --danger:  var(--red);
+  --info:    var(--sky);
+  --link:    var(--blue);
+
+  /* Focus ring */
+  --focus-ring: rgb(var(--blue-rgb) / 0.6);
+}
+/* ============================================================
+   TinkerNet — Typography tokens
+   Display: Chakra Petch (angular, technical)
+   Body:    IBM Plex Sans
+   Mono:    JetBrains Mono (labels, data, eyebrows)
+   ============================================================ */
+
+:root {
+  /* Families */
+  --font-display: 'Chakra Petch', 'Space Grotesk', system-ui, sans-serif;
+  --font-sans:    'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+
+  /* Type scale (1.250 major-third-ish, tuned) */
+  --fs-3xs: 10px;
+  --fs-2xs: 11px;
+  --fs-xs:  12px;
+  --fs-sm:  14px;
+  --fs-md:  16px; /* base body */
+  --fs-lg:  18px;
+  --fs-xl:  22px;
+  --fs-2xl: 28px;
+  --fs-3xl: 36px;
+  --fs-4xl: 48px;
+  --fs-5xl: 64px;
+  --fs-6xl: 84px;
+
+  /* Weights */
+  --fw-regular: 400; /* @kind font */
+  --fw-medium:  500; /* @kind font */
+  --fw-semibold:600; /* @kind font */
+  --fw-bold:    700; /* @kind font */
+
+  /* Line heights */
+  --lh-tight:   1.05; /* @kind font */
+  --lh-snug:    1.2; /* @kind font */
+  --lh-normal:  1.5; /* @kind font */
+  --lh-relaxed: 1.65; /* @kind font */
+
+  /* Letter spacing */
+  --ls-tight:  -0.02em; /* @kind font */
+  --ls-normal: 0; /* @kind font */
+  --ls-wide:   0.04em; /* @kind font */
+  --ls-label:  0.14em; /* mono eyebrows / uppercase labels @kind font */
+
+  /* --- Semantic roles --- */
+  --text-display-font: var(--font-display);
+  --text-display-weight: var(--fw-700, 700);
+
+  --eyebrow-font:    var(--font-mono);
+  --eyebrow-size:    var(--fs-xs);
+  --eyebrow-spacing: var(--ls-label); /* @kind font */
+  --eyebrow-weight:  var(--fw-medium); /* @kind font */
+
+  --body-font:   var(--font-sans);
+  --body-size:   var(--fs-md);
+  --body-leading:var(--lh-relaxed);
+}
+/* ============================================================
+   TinkerNet — Spacing & layout tokens
+   4px base grid.
+   ============================================================ */
+
+:root {
+  --space-0:  0;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-7:  32px;
+  --space-8:  40px;
+  --space-9:  48px;
+  --space-10: 64px;
+  --space-11: 80px;
+  --space-12: 96px;
+  --space-13: 128px;
+  --space-14: 160px;
+
+  /* Layout */
+  --container-max: 1200px;
+  --container-wide: 1440px;
+  --gutter: var(--space-6);
+
+  /* Component sizing */
+  --control-h-sm: 30px;
+  --control-h-md: 38px;
+  --control-h-lg: 46px;
+  --control-pad-x: var(--space-4);
+}
+/* ============================================================
+   TinkerNet — Effects: radii, borders, shadows, neon glow, grid
+   Sharp corners. Hairline borders. Glow over soft shadow.
+   ============================================================ */
+
+:root {
+  /* Corner radii — kept sharp/technical */
+  --radius-xs:  2px;
+  --radius-sm:  3px;
+  --radius-md:  5px;
+  --radius-lg:  8px;
+  --radius-xl:  12px;
+  --radius-2xl: 18px;
+  --radius-pill:999px;
+
+  /* Border widths */
+  --bw-hair: 1px;
+  --bw-thick: 2px;
+
+  /* Elevation shadows (black-based, for depth) */
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 4px 16px rgb(0 0 0 / 0.45);
+  --shadow-lg: 0 12px 40px rgb(0 0 0 / 0.55);
+  --shadow-pop: 0 8px 28px rgb(0 0 0 / 0.6), 0 0 0 1px var(--line-subtle);
+
+  /* Neon glow rings — accent-tinted */
+  --glow-cyan:    0 0 0 1px rgb(var(--cyan-rgb) / 0.35), 0 0 18px rgb(var(--cyan-rgb) / 0.28);
+  --glow-cyan-sm: 0 0 0 1px rgb(var(--cyan-rgb) / 0.4), 0 0 10px rgb(var(--cyan-rgb) / 0.22);
+  --glow-magenta: 0 0 0 1px rgb(var(--magenta-rgb) / 0.35), 0 0 18px rgb(var(--magenta-rgb) / 0.3);
+  --glow-lime:    0 0 0 1px rgb(var(--lime-rgb) / 0.35), 0 0 16px rgb(var(--lime-rgb) / 0.25);
+
+  /* Inner glow / inset for wells */
+  --inset-well: inset 0 1px 0 rgb(255 255 255 / 0.03), inset 0 0 0 1px rgb(0 0 0 / 0.3);
+
+  /* Focus */
+  --focus-shadow: 0 0 0 2px var(--surface-page), 0 0 0 4px var(--focus-ring);
+
+  /* Brand surface gradients (subtle) */
+  --grad-void: radial-gradient(120% 80% at 50% -10%, #0E1620 0%, var(--bg-base) 55%, var(--void) 100%);
+  --grad-signal: linear-gradient(135deg, var(--blue) 0%, var(--brand-blue) 100%);
+  --grad-pulse: linear-gradient(135deg, var(--magenta) 0%, var(--violet) 100%);
+
+  /* Grid / scanline overlays (use as background-image) */
+  --grid-fine: linear-gradient(rgb(var(--cyan-rgb) / 0.04) 1px, transparent 1px),
+               linear-gradient(90deg, rgb(var(--cyan-rgb) / 0.04) 1px, transparent 1px);
+  --grid-size: 28px 28px;
+  --scanlines: repeating-linear-gradient(0deg, rgb(255 255 255 / 0.015) 0px, rgb(255 255 255 / 0.015) 1px, transparent 1px, transparent 3px); /* @kind other */
+}
+/* ============================================================
+   TinkerNet — Motion tokens
+   Crisp, mechanical. Snappy ease-out, no playful bounces.
+   ============================================================ */
+
+:root {
+  --dur-instant: 80ms;  /* @kind other */
+  --dur-fast:    140ms; /* @kind other */
+  --dur-base:    220ms; /* @kind other */
+  --dur-slow:    360ms; /* @kind other */
+  --dur-slower:  600ms; /* @kind other */
+
+  --ease-out:    cubic-bezier(0.2, 0.8, 0.2, 1); /* @kind other */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1); /* @kind other */
+  --ease-snap:   cubic-bezier(0.5, 0, 0.1, 1); /* @kind other */
+  --ease-linear: linear; /* @kind other */
+
+  --transition-base: all var(--dur-base) var(--ease-out); /* @kind other */
+  --transition-fast: all var(--dur-fast) var(--ease-out); /* @kind other */
+}

@@ -1,0 +1,71 @@
+/* Captive-portal page styles (the guest-facing page being designed). Its own
+   light theme, themeable via CSS vars set from the design model:
+     --cp-w (card width), --cp-accent, --cp-radius, --cp-hsize, --cp-font.
+   The page background gradient is set inline per page. Shared by the live portal
+   and the editor canvas preview so they look identical. */
+
+.cp-page {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 18px;
+  font-family: var(--cp-font, Helvetica, system-ui, sans-serif);
+  -webkit-font-smoothing: antialiased;
+}
+.cp-card {
+  width: 100%;
+  max-width: var(--cp-w, 420px);
+  background: #fff;
+  border-radius: 18px;
+  padding: 28px 26px 24px;
+  box-shadow: 0 24px 60px rgb(0 0 0 / 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* logo / image */
+.cp-logo { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 4px 0 14px; }
+.cp-logo img { max-width: 100%; height: auto; display: block; }
+.cp-logo__txt { font-weight: 800; font-size: 15px; letter-spacing: 0.04em; color: #1761B0; text-transform: uppercase; }
+
+/* text blocks */
+.cp-heading { font-size: var(--cp-hsize, 24px); font-weight: 700; color: #16202B; margin: 2px 0 12px; line-height: 1.2; }
+.cp-text { font-size: 14px; color: #5A6976; margin: 0 0 12px; line-height: 1.55; }
+.cp-text.is-muted { font-size: 12px; color: #93A1B0; margin-top: 8px; }
+.cp-al-center { text-align: center; }
+.cp-al-left { text-align: left; }
+.cp-al-right { text-align: right; }
+.cp-spacer { width: 100%; }
+
+/* login widgets */
+.cp-form { display: flex; flex-direction: column; gap: 10px; margin: 0 0 12px; }
+.cp-field {
+  display: flex; align-items: center; gap: 9px;
+  border: 1px solid #DBE2EA; border-radius: var(--cp-radius, 10px);
+  padding: 0 13px; height: 46px; background: #F7F9FC;
+}
+.cp-field__ico { color: #93A1B0; display: inline-flex; flex: none; }
+.cp-field input {
+  flex: 1; border: none; background: transparent; outline: none;
+  font-size: 14px; color: #16202B; font-family: inherit; min-width: 0;
+}
+.cp-field input::placeholder { color: #9AA7B4; }
+.cp-btn {
+  width: 100%; border: none; color: #fff; font-weight: 700; font-size: 15px;
+  padding: 13px 20px; cursor: pointer; font-family: inherit;
+  background: var(--cp-accent, #2F8CEE); border-radius: var(--cp-radius, 10px);
+  transition: filter .15s ease;
+}
+.cp-btn:hover { filter: brightness(1.06); }
+.cp-btn-disabled { opacity: 0.55; cursor: default; }
+
+/* banners */
+.cp-error { background: #FDECEC; color: #B3261E; border: 1px solid #F5C2C0; border-radius: 10px;
+  padding: 10px 12px; font-size: 14px; margin: 0 0 14px; text-align: center; }
+.cp-notice { background: #FFF7E6; color: #7A4F01; border: 1px solid #F3D68A; border-radius: 10px;
+  padding: 12px 14px; font-size: 13px; margin: 0 0 16px; text-align: center; line-height: 1.5; }
+.cp-notice a { display: inline-block; margin-top: 6px; color: #1761B0; font-weight: 700; text-decoration: none; }
+.cp-notice.flash { animation: cp-flash .9s ease; }
+@keyframes cp-flash { 0%,100% { box-shadow: 0 0 0 0 rgb(245 181 68 / 0) } 30% { box-shadow: 0 0 0 4px rgb(245 181 68 / 0.5) } }

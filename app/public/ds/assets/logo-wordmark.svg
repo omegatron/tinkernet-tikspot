@@ -1,0 +1,11 @@
+<svg width="220" height="48" viewBox="0 0 220 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="TinkerNet">
+  <g stroke="#1761B0" stroke-width="2.4" stroke-linecap="round" fill="none">
+    <path d="M11 37 A 9 9 0 0 1 20 28" opacity="0.95"></path>
+    <path d="M11 37 A 17 17 0 0 1 28 20" opacity="0.6"></path>
+    <path d="M11 37 A 25 25 0 0 1 36 12" opacity="0.32"></path>
+  </g>
+  <circle cx="11" cy="37" r="3.6" fill="#1761B0"></circle>
+  <circle cx="20" cy="28" r="1.8" fill="#1761B0" opacity="0.9"></circle>
+  <circle cx="28" cy="20" r="1.6" fill="#1761B0" opacity="0.55"></circle>
+  <text x="52" y="32" font-family="&#39;Chakra Petch&#39;,&#39;Space Grotesk&#39;,sans-serif" font-size="24" font-weight="700" letter-spacing="0.5" fill="#E6EDF3">tinker<tspan fill="#1761B0">net</tspan></text>
+</svg>

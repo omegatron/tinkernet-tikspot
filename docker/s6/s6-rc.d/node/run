@@ -1,0 +1,4 @@
+#!/command/with-contenv sh
+# Tikspot Node backend (captive portal + admin portal + API).
+cd /app || exit 1
+exec node src/server.js

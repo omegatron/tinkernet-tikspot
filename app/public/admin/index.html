@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tikspot · Admin</title>
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">Tikspot</div>
+    <nav id="nav">
+      <a data-tab="active" class="active">Active users</a>
+      <a data-tab="devices">Remembered devices</a>
+      <a data-tab="plans">Plans</a>
+      <a data-tab="vouchers">Vouchers</a>
+      <a data-tab="accounts">Accounts</a>
+      <a data-tab="logs">Logs</a>
+      <a data-tab="system">System</a>
+      <a data-tab="router">Router setup</a>
+      <a data-tab="backup">Backup</a>
+      <a class="ext" href="/admin/editor.html">Portal editor →</a>
+      <a class="ext" href="/login" target="_blank" rel="noopener">View portal →</a>
+    </nav>
+    <div class="ver"><a id="logout" class="logout">Log out</a><span id="ver"></span></div>
+  </aside>
+  <main class="content">
+    <div id="toast" class="toast"></div>
+    <section id="view"></section>
+  </main>
+  <script src="/admin/admin.js"></script>
+</body>
+</html>

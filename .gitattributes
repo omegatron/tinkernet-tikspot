@@ -1,0 +1,21 @@
+# Default: let Git handle text normalization.
+* text=auto
+
+# Files that run INSIDE the Linux container must keep LF line endings, or their
+# shebang lines break when executed (e.g. `#!/command/with-contenv sh\r`). Force
+# LF regardless of the host platform's autocrlf setting.
+*.sh            text eol=lf
+docker/s6/**    text eol=lf
+*.js            text eol=lf
+*.cjs           text eol=lf
+*.mjs           text eol=lf
+*.sql           text eol=lf
+
+# Shell/script-like files without extensions in the s6 tree (run, up, type).
+docker/s6/s6-rc.d/**/run   text eol=lf
+docker/s6/s6-rc.d/**/up    text eol=lf
+docker/s6/s6-rc.d/**/type  text eol=lf
+
+# Hotspot HTML/JS templates served to clients — keep LF for consistency.
+*.html          text eol=lf
+*.json          text eol=lf

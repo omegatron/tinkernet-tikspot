@@ -1,0 +1,3 @@
+#!/command/with-contenv sh
+# FreeRADIUS in the foreground, logging to stdout so s6 captures it.
+exec radiusd -f -l stdout

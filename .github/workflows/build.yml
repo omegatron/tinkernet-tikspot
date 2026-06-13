@@ -1,0 +1,51 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up QEMU (for arm64 emulation)
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # Unit tests (pure modules: auth hashing, validators, rate limiter,
+      # clients.conf renderer, local-date). No native deps required.
+      - name: Unit tests
+        run: cd app && npm test
+
+      # Build a local amd64 image and enforce the <250 MB budget gate.
+      - name: Build amd64 image (load locally)
+        run: docker buildx build --load --provenance=false --sbom=false --platform linux/amd64 -t tikspot:ci -f docker/Dockerfile .
+
+      - name: Image size budget gate (<250 MB)
+        run: node scripts/check-size.mjs tikspot:ci
+
+      # Verify the multi-arch build also succeeds (no --load: buildx can't load
+      # multi-platform images into the daemon).
+      - name: Build multi-arch image (arm64 + amd64)
+        run: docker buildx build --platform linux/arm64,linux/amd64 -t tikspot:ci-multi -f docker/Dockerfile .
+
+      # Smoke test: start the container and hit the health check.
+      - name: Smoke test /healthz
+        run: |
+          docker run -d --name tikspot-smoke -p 8080:80 tikspot:ci
+          for i in $(seq 1 30); do
+            if curl -fsS http://localhost:8080/healthz; then echo "ok"; exit 0; fi
+            sleep 1
+          done
+          echo "healthz did not come up"; docker logs tikspot-smoke; exit 1
