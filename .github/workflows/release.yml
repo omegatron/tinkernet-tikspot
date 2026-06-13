@@ -43,7 +43,7 @@ jobs:
             type=raw,value=latest
 
       - name: Build and push (arm64 + amd64)
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: docker/Dockerfile
